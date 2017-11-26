@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secure Page</title>
+</head>
+<body>
+    <h2>Secure Page</h2>
+    <div>
+        <button onclick="logout()">
+            Logout
+        </button>
+    </div>
+    <div id="error">
+    </div>
+
+    <script>
+        function logout() {
+            fetch('http://localhost:8000/logout', { method: 'POST' })
+                .then(function(res) {
+                    if(!res.ok) {
+                        throw 'Request failed';
+                    }
+
+                    history.replaceState({}, 'home', '/');
+                    history.go();
+                })
+                .catch(function(err){
+                    let error = document.getElementById('error');
+
+                    error.innerText = ['Error:', err].join('');
+                });
+        }
+    </script>
+</body>
+</html>

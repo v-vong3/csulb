@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+</head>
+<body>
+    <h2>Login Page</h2>
+    <div>
+        <button onclick="login()">
+            Login
+        </button>
+    </div>
+
+    <div id="main">
+    </div>
+    <div id="error">
+    </div>
+
+    <script>
+        function login() {
+            fetch('http://localhost:8000/login', { method: 'POST', })
+                .then((res) => {
+                    if(!res.ok){
+                        throw 'Request failed';
+                    }
+
+                    let main = document.getElementById('main');
+                    main.innerText = 'Login complete';
+                })
+                .catch((resason) => {
+                    let error = document.getElementById('error');
+                    error.innerText = ['Error:', resason].join(' ');
+                })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "vs-code-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'Special command that can be invoked directly; default is node [file].js'",
+    "test": "echo 'Special command that can be invoked directly'",
+    "debug": "lite-server",
+    "debug2": "node --debug-brk --inspect index.js",
+    "express": "node ./express/express-setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "lite-server": "^2.3.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  }
+}

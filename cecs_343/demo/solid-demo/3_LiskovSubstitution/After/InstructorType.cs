@@ -1,4 +1,4 @@
-namespace solid_demo.LiskovSubstitution.Before
+namespace solid_demo.LiskovSubstitution.After
 {
     public enum InstructorType
     {

@@ -7,10 +7,10 @@ This repository is a consoliation of all of my reference materials for courses t
 ## Directory Structure
 
 * CECS_343
-* * This directory contains educational material for CECS 343: Intro to Software Engineering.
+  ** This directory contains educational material for CECS 343: Intro to Software Engineering.
 
 * CECS_491
-* * This directory constains educational materials for both CECS 491A & CECS 491B.
+  ** This directory constains educational materials for both CECS 491A & CECS 491B.
 
 ## Revision Frequency
 

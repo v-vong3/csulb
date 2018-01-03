@@ -7,7 +7,7 @@ This directory is a consolidation of learning materials for computer science stu
 ## Directory Structure
 
 * demo
-* * Contains reference projects to aide learning concepts, technologies, etc.
+  ** Contains reference projects to aide learning concepts, technologies, etc.
 
 * docs
-* * Contains course materials such as the class syllabus, homework assignments, etc.
+  ** Contains course materials such as the class syllabus, homework assignments, etc.

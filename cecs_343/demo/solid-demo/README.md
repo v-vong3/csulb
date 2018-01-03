@@ -22,4 +22,4 @@ The examples are College-themed to be more relatable to the main audience and as
 
 * Normal code comments are included to help improve comprehension for those that are new to .NET/C#.
 
-* This projectw as updated to adhere to C# 7 syntax.
+* This project was updated to target .NET Standard 2.0 as of 1/1/2018.

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webForm-demo", "web-demo\webForm-demo.csproj", "{41B42083-606C-47BF-8455-0CAD7A5C3432}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webForm-demo", "webForm-demo\webForm-demo.csproj", "{41B42083-606C-47BF-8455-0CAD7A5C3432}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvc-demo", "mvc-demo\mvc-demo.csproj", "{2B92458E-F74D-4688-9CE0-32CE5A12A1EF}"
 EndProject

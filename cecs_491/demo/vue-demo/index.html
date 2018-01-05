@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Demo</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+
+<body>
+
+    <div id=app v-cloak>
+        <!-- Navigation -->
+        <nav id="navigation" class="navbar is-fixed-top is-link">
+            <div class="navbar-brand">
+                <a class="navbar-item" v-bind:href="homeUrl" title="Home">
+                    <i class="fa fa-book"></i>
+                </a>
+                <div class="navbar-burger" data-target="#navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a id="home" class="navbar-item is-active" href="">Home</a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Features
+                        </a>
+                        <div class="navbar-dropdown" v-on:click.stop="route($event)">
+                            <a id="dataBind" class="navbar-item">Data Binding</a>
+                            <hr class="navbar-divider">
+                            <a id="eventHandling" class="dropdown-item">Event Handling</a>
+                            <hr class="navbar-divider">
+                            <a id="advance" class="dropdown-item">Advance</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end" @click.capture="route($event)">
+                    <a id="settings" class="navbar-item" title="Settings">
+                        <i class="fa fa-gear"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+            <section class="section has-text-centered">
+                <div class="container is-fluid">
+                    <h1 class="title">{{title}}</h1>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container has-text-centered">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent">
+                            <div class="tile is-child notification is-success">
+                                <div class="content">
+                                    <h2 class="subtitle">{{tileTitles[0]}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile is-parent">
+                            <div class="tile is-child notification is-warning">
+                                <div class="content">
+                                    <h2 class="subtitle">{{tileTitles[1]}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile is-parent">
+                            <div class="tile is-child notification is-primary">
+                                <div class="content">
+                                    <h2 class="subtitle">{{tileTitles[2]}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second tile row -->
+                    <div class="title ">
+                        <div class="tile is-child notification is-black">
+                            <div class="content">
+                                <h2 class="subtitle">{{tileTitles[3]}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <footer class="footer has-text-centered">
+            <span v-once v-text="footerMessage"></span>
+        </footer>
+    </div>
+
+
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/scripts/bulma.js"></script>
+
+    <!-- Application specific scripts -->
+    <script src="/scripts/app.js"></script>
+
+</body>
+
+</html>

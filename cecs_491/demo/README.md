@@ -14,3 +14,6 @@ This folder contains all demonstration projects for the course.  The goal was to
 
 * vs-code-demo
   * Demo of Visual Studio Code IDE, npm and ExpressJS
+
+* vue-demo **(INCOMPLETE)**
+  * Demo of VueJS and Bulma

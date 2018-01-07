@@ -8,3 +8,6 @@ This folder contains all demontration projects for the course.  The goal was to 
 
 * solid-demo
   * Examples showcasing the application of the SOLID principles
+
+* abstraction-demo
+  * Example of the benefits of identifying abstractions and the advantages of implementing code based off of abstractions.

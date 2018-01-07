@@ -2,7 +2,9 @@
 
 ## About
 
-This repository is a consoliation of all of my reference materials for courses that I have taught at CSULB.  Unless otherwise stated, all works (source code, documents, etc) found in this GitHub repository was created by me.  For those instrested in utilizing any of my materials found here for personnel use, feel free to do so.  All I ask is that you reference to the original work (this GitHub repo).
+This repository is a consoliation of all of my reference materials for courses that I have taught at CSULB.  Unless otherwise stated, all works (source code, documents, etc) found in this GitHub repository was created by me.
+
+Individuals can utilizing any of my materials found here for personal use, however, all materials shall not be reposted to other sites, whether modified or not, without permission from the author.
 
 ## Directory Structure
 
@@ -20,4 +22,6 @@ It is recommended that you utilize GitHub's repo notification features if you wi
 
 ## License
 
-Copyright 2017 Vatanak Vong
+All demos are released under the [MIT](LICENSE) license.
+
+All other materials are Copyright &copy; 2018 by Vatanak Vong

@@ -2,7 +2,7 @@
 
 ## About
 
-This project provides a few guidelines for designing abstractions.  The focus will be more on the concept of abstractions rather than the actual implementation code.  This demo is similar to the **_solid-demo_** in terms of techniques used, but the goal is more to showcase how identifying and separating components will result in cleaner and more extensible product.  It is recommended that you should view **_solid-demo_** first if you are new to .NET/C# as there are more syntax explanations in that demo.
+This project provides a few guidelines for designing abstractions.  The focus will be more on the concept of abstractions rather than the actual implementation code.  This demo is similar to the **_solid-demo_** in terms of techniques used, but the goal is more to showcase how identifying and separating components will result in a cleaner and more extensible product.  It is recommended that you should view **_solid-demo_** first if you are new to .NET/C# as there are more syntax explanations covered in that demo.
 
 ## Requirements
 

@@ -1,5 +1,9 @@
 # Liskov's Substitution Principle (LSP)
 
+## Principle
+
+Instances of the parent object should be replaceable with instances of their subtype object without altering the correctness of the system.  Promotes "design by contracts" in which functionality are expanded through composition of behaviors instead of through direct inheritance of objects.
+
 ## Rquirements
 
 * Utilize code from OpenClose/After if needed

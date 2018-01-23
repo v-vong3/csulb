@@ -1,5 +1,9 @@
 # Interface Segregation Principle (ISP)
 
+## Principle
+
+It is better to have many, smaller client-specific interfaces instead of one general-purpose interface.  Smaller interfaces allows for more appropriate reusability as it does not lead to enforcing behavior that may not be relevant just so a specific behavior can be inherited.
+
 ## Rquirements
 
 * Leverage code found in preceeding modules (1-3) if needed.

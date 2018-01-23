@@ -1,5 +1,9 @@
 # Dependency Inversion Principle (DIP)
 
+## Principle
+
+High level objects should not need to know the specifics of the low level objects that they depend on (i.e. abtractions over implementation).  Dependance on abstractions promotes loose coupling of objects since the system is no longer tied to the specific concrete implementation, but rather a specific behavior.
+
 ## Rquirements
 
 * Leverage code in previous modules if needed

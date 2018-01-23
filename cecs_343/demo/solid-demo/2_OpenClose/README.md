@@ -1,5 +1,9 @@
 # Open/Close Principle (OCP)
 
+## Principle
+
+Objects should be closed to change, but open to extensibility.  The objects should be structured in a way where existing objects should not need to be changed in order to address requirement change.  However, when new requirements invalidates old requirements, then this principle is no longer applicable to the existing objects.
+
 ## Requirements
 
 * Use Code found in SingleResponsibility/After as a starting point

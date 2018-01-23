@@ -1,5 +1,9 @@
 # Single Responsibility Principle (SRP)
 
+## Principle
+
+An object should only have a single responsibility.  Consequently, any change to specificiation for that responsibility will be isolated to affected objects and not throughout the entire system.
+
 ## Rquirements
 
 * Model a university course.  Courses need to be able to update their room location and description.  Students need to be able to add a course, but their major's department must be the same as the course's department.  For simplicity, assume that university departments and student majors are one to one.

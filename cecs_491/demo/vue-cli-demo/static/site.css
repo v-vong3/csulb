@@ -1,0 +1,15 @@
+body {
+  background-color: rgb(230, 230, 230);
+}
+
+.error {
+  color: red;
+}
+
+span {
+  margin-right: 15px;
+}
+
+.right {
+  float: right;
+}

@@ -11,3 +11,6 @@ This folder contains all demontration projects for the course.  The goal was to 
 
 * abstraction-demo
   * Example of the benefits of identifying abstractions and the advantages of implementing code based off of abstractions.
+
+* patterns-demo
+  * Implementation of common design patterns

@@ -104,8 +104,10 @@ For more information on the "vanilla" project structure, go [here](https://vuejs
 
 ### Node
 
-* pm2 (Process Manager 2) - Manage multiple processes in node. Similar to nodemon
-* d
+* pm2 (Process Manager 2) - Manage multiple processes in node (AGPL-3.0 license)
+* nodemon - Alternative to pm2 if you want software that is *MIT* licensed
+* lite-server - Easy to use development HTTP server if you don't want to use webpack
+* http-server - Production grade HTTP server
 
 ### Visual Studio Code
 
@@ -117,3 +119,4 @@ For more information on the "vanilla" project structure, go [here](https://vuejs
 ### Chrome Tooling
 
 * Vue Dev Tools - Adds Vue tab to Chrome's DevTools for enhancing the debugging experience in Vue projects
+* Postman - REST client for testing API endpoints

@@ -15,5 +15,8 @@ This folder contains all demonstration projects for the course.  The goal was to
 * vs-code-demo
   * Demo of Visual Studio Code IDE, npm and ExpressJS
 
+* vue-cli-demo
+  * Demo of utilizing the vue-cli v2.x tool to scaffold a workspace specific for Vue.  Additional content was added inorder to make the project template a complete starter pack
+
 * vue-demo **(INCOMPLETE)**
   * Demo of VueJS and Bulma

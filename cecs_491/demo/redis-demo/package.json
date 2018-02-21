@@ -1,0 +1,28 @@
+{
+  "name": "redis-demo",
+  "version": "1.0.0",
+  "description": "Demo of NoSQL",
+  "dependencies": {
+    "ioredis": "^3.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0"
+  },
+  "scripts": {
+    "clean": "echo 'Cleaning...' && rm -rf ./dist",
+    "setup": "echo 'Setting up distribution...' && mkdir ./dist",
+    "babel": "echo 'Transpiling...' && babel ./src -o ./dist/index",
+    "build": "npm run clean && npm run setup && npm run babel",
+    "start": "npm run build && node bin/dev"
+  },
+  "keywords": [
+    "Redis",
+    "iosredis",
+    "node"
+  ],
+  "author": "Vong",
+  "license": "MIT"
+}

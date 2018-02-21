@@ -10,13 +10,13 @@ If you are not familiar with Node or NPM (especially, what the package.json file
 
 Clone the repo and run the following commands
 
-    ``` bash
-    # Installs all dependencies found in package.json
-    npm install
+``` bash
+# Installs all dependencies found in package.json
+npm install
 
-    # Starts the demo
-    npm start
-    ```
+# Starts the demo
+npm start
+```
 
 ## Directory Structure
 

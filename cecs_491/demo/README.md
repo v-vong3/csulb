@@ -12,11 +12,14 @@ This folder contains all demonstration projects for the course.  The goal was to
 * js-event-registration-demo
   * Demo of DOM event registration
 
+* redis-demo
+  * Demo of Redis, an in-memory Key-Value NoSQL store.  Showcases the pros and cons of a non-relational data store
+
 * vs-code-demo
   * Demo of Visual Studio Code IDE, npm and ExpressJS
 
 * vue-cli-demo
-  * Demo of utilizing the vue-cli v2.x tool to scaffold a workspace specific for Vue.  Additional content was added inorder to make the project template a complete starter pack
+  * Demo of utilizing the vue-cli v2.x tool to scaffold a workspace specific for Vue.  Additional content was added in order to make the project template a complete starter pack.
 
 * vue-demo **(INCOMPLETE)**
   * Demo of VueJS and Bulma

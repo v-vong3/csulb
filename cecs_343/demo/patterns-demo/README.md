@@ -38,7 +38,7 @@ This project showcases common design patterns.  Liberties were taken for each ex
   * Memento
   * Observer
   * State
-  * Strategy
+  * **Strategy**
   * Template Method
   * Visitor
   * **_Repository_**

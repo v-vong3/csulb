@@ -1,6 +1,18 @@
 
+// Initialization (When not using ES Modules or Babel)
+const Vue = Vue || null;
+const axios = axios || null;
 
-// Initialization
+if(!!Vue) {
+    alert('Vue is not loaded');
+    // JS code to load Vue
+}
+
+if(!!axios) {
+    alert('Axios is not loaded')
+    // JS code to load axios
+}
+
 const app = new Vue({
     el: "#app",
     data: {
@@ -67,7 +79,38 @@ const app = new Vue({
 });
 
 
-// Routing
+// Components
 
+// Component Object
+const CustomFooter = {
+    name: 'custom-footer', // This is optional as registeration requires a name anyways
+    template: '<p> This is a footer </p>',
+    props: {
+        value: {
+            type: String,
+            default: ''
+        }
+    },
+    computed: {},
+    data: function () {
+        return {
 
-// Error Handling
+        };
+    },
+    methods: {}
+};
+
+// Global component registration
+//  * Format: Vue.compoment(tagName, options)
+//   - PRO: Global registration automatically resolves circular references
+app.component('custom-footer', CustomFooter);
+
+// When declaring components use PascalCase
+// When using components within HTML template use kebab-case to align with W3C rules
+//   - all lowercase
+//   - Must contain hyphen
+// If components are not being passed via slot elements then they can be self-closing
+
+// Local component registration
+//  *
+

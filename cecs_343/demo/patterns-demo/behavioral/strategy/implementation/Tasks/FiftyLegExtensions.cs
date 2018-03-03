@@ -1,14 +1,13 @@
-using patterns_demo.behavioral.strategy.contract;
-
 namespace patterns_demo.behavioral.strategy.implementation
 {
-    public class OneHundredSitUpsTask : ITask
+    using patterns_demo.behavioral.strategy.contract;
+    public class FiftyLegExtensionsTask : ITask
     {
         public ITask NextTask {get; set;}
 
         public void Execute()
         {
-            // Do 100 sit-ups
+            // Do 50 leg extensions
         }
     }
 }

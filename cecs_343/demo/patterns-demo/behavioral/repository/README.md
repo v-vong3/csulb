@@ -1,8 +1,32 @@
 # (CRUD) Repository Pattern
 
-## Usageß
+## Description
+
+This pattern is used when you want your appliction to be agnostic to the data store component.  By doing so, you are creating an abstraction layer in between the data store and the rest of your application.  This layer is commonly referred to as the data access layer (DAL) as it is responsible for handling communication to and from the data store to the rest of your system and vice versa.
+
+                          |                   |
+        Other App Layers  | Data Access Layer |  Data Store Layer
+                          |                   |
+
+Objects belonging to the DAL category are considered data access objects (DAO).  The (CRUD) repository is a specific DAO that only has Create, Read, Update and Delete capabilities.
+
+    * Add a new record in the data store (Create)
+    * Fetch record(s) from the data store (Read)
+    * Modify existing record(s) in the data store (Update)
+    * Remove existing records from the data store (Delete)
+
+Often times repositories are interpretted, by default, as CRUD repositories, while other times the term _Repository_ is interpretted as a DAO that provides a mechanism for getting exactly what you need from the data store, which infer that repositories goes beyond CRUD operations.  Consequently, the term _Repository_ can be misleading in certain circles within the software industry.  To avoid confusion, tt is recommended that you clarify which interpretation of the term is referring to when discussing repositories.
+
+## Example
+
+Image you are tasked with developing a data-centric application.  The application has to deal with data sources from relational database management systems (RDBMS), but the new CIO is mulling over migrating to a document-based management system (NoSQL).  The CIO won't make this discussion until 6-months from now.  Consequently, you may have to switch technology for your new task down the road.
+
+Since you are a lazy developer and you detest the idea of having to rework your entire application to accomodate an arbitrary decision, you decide to base your application's data access needs off of the (CRUD) Repository pattern.  If the NoSQL decision does go through, your application would be mostly insulated against it.  The only portion of your application that would be affect would be the implementation portion of your repository.  As such, you can simply create a new NoSQL repository object and replace any SQL-based repository instances with the new NoSQL repository instances.
+
+## Usage
 
 ``` csharp
+
 // Instantiating the repository
 var userRepo = new UserCrudRepository();
 

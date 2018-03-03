@@ -6,8 +6,10 @@ namespace patterns_demo.behavioral.strategy.implementation
     public class NormalWorkoutStrategy : ICommand
     {
         private ICollection<ITask> Tasks {get;}
+
         public NormalWorkoutStrategy()
         {
+            // Example of using 
             Tasks.Add(new OneHundredPushUpsTask());
             Tasks.Add(new OneHundredSitUpsTask());
             Tasks.Add(new OneHundredSquatsTask());

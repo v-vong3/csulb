@@ -5,7 +5,7 @@
 This pattern is used when you do NOT want to repeat instantiation logic everywhere in your code base and you want to offload the responsibility of knowing how to create dependencies.  The Factory pattern consolidates all code needed to create a *new *instance of an object, therefore, the _factory_ object is the sole entity that should be used when a new instance is needed.  Consequently, you no longer need to use the _new_ keyword when creating an instance.  Ideally, you only want to use the Factory pattern for objects that have complex or lengthy instantiation logic as the pattern would reduce code redundancy greatly.
 
 NOTE:
-The Factory pattern (sometimes called Simple Factory) and Factory Method pattern essentially the same pattern with one key difference: The Factory pattern is implemented as a dedicated object while the Factory Method pattern is implemented as an abstract method that is extended through [Method Overriding](https://en.wikipedia.org/wiki/Method_overriding)).  Both approaches are used for alleviating the need for using the _new_ keyword and all the benefits that comes with it.
+The Factory pattern (sometimes called Simple Factory) and Factory Method pattern essentially the same pattern with one key difference: The Factory pattern is implemented as a dedicated object while the Factory Method pattern is implemented as an abstract method that is extended through [Method Overriding](https://en.wikipedia.org/wiki/Method_overriding).  Both approaches are used for alleviating the need for using the _new_ keyword and all the benefits that comes with it.
 
 ## Example
 

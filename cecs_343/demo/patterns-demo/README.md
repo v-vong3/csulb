@@ -14,7 +14,7 @@ This project showcases common design patterns.  Liberties were taken for each ex
 
 * Creational Patterns - Patterns that focus on object creation
   * **Abstract Factory**
-  * **Factory Method**
+  * **Factory**
   * Singleton
   * Builder
   * Prototype

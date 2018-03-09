@@ -3,18 +3,21 @@ namespace patterns_demo.behavioral.strategy.implementation
     using System.Collections.Generic;
     using patterns_demo.behavioral.strategy.contract;
 
-    public class LegDayWorkoutStrategy : ICommand
+    public class LegDayWorkoutStrategy : IWorkoutStrategy
     {
         private ITask InitialTask {get;}
+        public int TaskCount {get;}
 
         public LegDayWorkoutStrategy()
         {
-            // Example of using NextTask to link to another task
+            // Example of using NextTask to link to another task just like a linked-list
             InitialTask = new OneHundredSquatsTask();
             InitialTask.NextTask = new OneHundredLungesTask()
             {
                 NextTask = new FiftyLegExtensionsTask()
             };
+
+            TaskCount = 3;
         }
 
         public void Execute()

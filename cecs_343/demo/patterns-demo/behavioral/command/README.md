@@ -2,13 +2,13 @@
 
 ## Description
 
-This pattern is used when you want to establish a common approach for representng/invoking requests or operations.  By doing so, you _reduce_ the need to create new handlers for each and every request/operation.  Since all request/operations are in a uniform structure, a generic handler can be reused for satisfying most scenarios.  For scenarios where you need a more grandular control flow, the uniform structure provides a template for how a custom handler can inject custom code.
+This pattern is used when you want to establish a common approach for representng/invoking requests or operations.  By doing so, you _reduce_ the need to create new handlers for each and every request/operation.  Since all request/operations are in a uniform structure, a generic handler can be used for satisfying most scenarios.  For scenarios where you need a more grandular control flow, the uniform structure provides a mechanism for adding a custom handler for the request/operation.
 
 ## Example
 
 Imagine you are tasked with developing a validation component.  Like any good developer, you want to make this component as extensible as possible and thus be able to handle different scenarios.  The required scenario was age validation (i.e. validate if a person is a legal adult in the U.S.).  However, you also realized that parking validation (i.e. validate if a user's alloted free parking time has expired) is another scenario that would need to be addressed.
 
-In order to support these disparate scenarios, you use the Command Pattern to encapsulate the operation of _validation_ since the commonality of both scenarios is to validate something.  By turning the _validation_ operation into an object, the calling entity no longer needs to know about the implementaion details of actual validation that is taking place.  ALl the calling entity needs to know is that an object has a method for validation.
+In order to support these disparate scenarios, you use the Command Pattern to encapsulate the operation of _validation_ since the commonality of both scenarios is to validate something.  By turning the _validation_ operation into an object, the calling entity no longer needs to know about the implementaion details of actual validation that is taking place.  Instead, the calling entity only needs to know that the object contains a _validation_ method.
 
 ## Usage
 

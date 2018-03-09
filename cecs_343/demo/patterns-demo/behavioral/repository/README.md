@@ -15,7 +15,7 @@ Objects belonging to the DAL category are considered data access objects (DAO). 
     * Modify existing record(s) in the data store (Update)
     * Remove existing records from the data store (Delete)
 
-Often times repositories are interpretted, by default, as CRUD repositories, while other times the term _Repository_ is interpretted as a DAO that provides a mechanism for getting exactly what you need from the data store, which infer that repositories goes beyond CRUD operations.  Consequently, the term _Repository_ can be misleading in certain circles within the software industry.  To avoid confusion, tt is recommended that you clarify which interpretation of the term is referring to when discussing repositories.
+Typically, by default, the term _Repository_ is interpreted to mean a DAO with _only_ CRUD operations, while other times the term _Repository_ is interpreted simply as a DAO that provides all operations needed for getting exactly what you need from the data store.  As a result, the later interpretation infers that a repository goes beyond just CRUD operations.  Consequently, the term _Repository_ can be misleading within certain circles of the software industry.  To avoid confusion, it is recommended that you clarify which interpretation of the repository term that is being referred to when discussing the pattern.  Alternatively, many have decided to label the later interpretation as it's own pattern known as the (Data) Gateway Pattern.  Regardless of the name, the main premise is to create an isolation layer between your system and the data store so that the responsibiity of data access is confined to a single area of a system instead of sporadically spinkled throughout.
 
 ## Example
 

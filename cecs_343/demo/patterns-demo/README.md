@@ -16,7 +16,7 @@ This project showcases common design patterns.  Liberties were taken for each ex
   * **Abstract Factory**
   * **Factory**
   * Singleton
-  * Builder
+  * **Builder**
   * Prototype
 
 * Structural Patterns - Patterns that focus on the composition of an object
@@ -42,3 +42,8 @@ This project showcases common design patterns.  Liberties were taken for each ex
   * Template Method
   * Visitor
   * **_Repository_**
+
+## Directory Structure
+
+* contract - Folder to contain any applicable .NET interface files
+* implementation - Folder to contain the concrete implememtation of .NET interfaces or stand-alone class files

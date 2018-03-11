@@ -9,7 +9,7 @@ The Factory pattern (sometimes called Simple Factory) and Factory Method pattern
 
 ## Example
 
-Image you have to build an application whose data store is in flux.  You do not know if the data store will be Sql-based, NoSQL or file-based.  Your manager has stated that the default will be a Sql-based system.
+Imagine you have to build an application whose data store is in flux.  You do not know if the data store will be Sql-based, NoSQL or file-based.  Your manager has stated that the default will be a Sql-based system.
 
 Since you strive for extensibility, you decided to implement the Factory pattern for the data access object ([see Repository Pattern for DAO](../../behavioral/repository/README.md)).  The Factory pattern will help you resolve the uncertainty of the data store by allowing you to easily swap data store implemenation through a minor code change instead of a rewrite of the entire application.  In addition, you extend your system to be able to handle current scenarios as well as any potential future scenario as you can simply implement a new data store class and register that class with the data store factory.
 
@@ -41,7 +41,7 @@ var noSqlDataStore = dataStoreFactory.Create(DataStoreTypes.File);
 
 ## Disadvantages
 
-* Adds an additional object that needs to be maintained (i.e. the _factory_ object)
+* Adds an additional object that needs to be maintained (i.e. the _factory_ object and interface)
 * Requires (potentially convoluted) logic to pass arguments into the right object's constructor
 * Can lead to gigantic _switch_ or _if-else_ code blocks if you are not using some sort of dynamic code inspection in order to select the object to create ([see .NET Reflection](https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection))
 

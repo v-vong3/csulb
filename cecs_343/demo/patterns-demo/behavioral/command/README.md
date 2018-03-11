@@ -51,6 +51,7 @@ var ticketResult = validator.Validate(ticket);
 
 ## Disadvantages
 
+* Adds additional objects to maintain (i.e. the concrete _Command_ objects and interface)
 * Does not account for exception handling.  All implementations must align with an exception handling strategy or else unpredictable results can occur
 * Reliant on the creation of the command to be properly configured prior to invocation of command
 

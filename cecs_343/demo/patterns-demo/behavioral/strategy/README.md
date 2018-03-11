@@ -37,6 +37,7 @@ Notice how concise and clear the usage code is.  Image how bloated the code woul
 
 ## Disadvantages
 
+* Adds an additional object to maintain (i.e. the Strategy object and interface)
 * The strategy is typically responsible for understanding how to construct each and every task that it utilizes unless this concern is offloaded to another entity
 * Every task in a strategy is typically in a set order, therefore, rearrangement of any task can be detrimental to the overall strategy unless all tasks are designed to be order agnostic
 * All tasks must be aware of the error handling mechanism or else the strategy must decide to handle errors as an aggregate or break out as soon as the first error is encountered

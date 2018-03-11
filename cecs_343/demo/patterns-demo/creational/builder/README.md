@@ -52,5 +52,5 @@ var normalWorkoutStrategy = builder.Build();
 
 ## Disadvantages
 
-* Adds additional objects to maintain (Builder object and interface)
-* Unable to enforce during compile-time that every required member is set other than throwing an exception during Build()
+* Adds additional objects to maintain (i.e. the Builder object and interface)
+* Unable to enforce, during compile-time, that all required members are set other than by throwing an exception during the creation step (i.e. the _Build()_ method)

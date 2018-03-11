@@ -61,9 +61,10 @@ var profileForUI = new UserProfileDto()
 
 ## Disadvantages
 
-* Increases the size of solution by requiring the crafting of a dedicated object for each DTO scenario
-* Additional management all DTO
-* Over engineering for scenarios where only a couple of parameters will ever be need to be transported
+* Adds additional objects to be maintained
+  * Increases the size and complexity of solution by requiring specific objects for each transfer scenario
+  * DTOs consisting of data from multiple sources are more brittle and susceptible to system changes
+* Over-engineering for scenarios where only a few parameters need to be transported to another layer
 
 ## Zero-Sum
 

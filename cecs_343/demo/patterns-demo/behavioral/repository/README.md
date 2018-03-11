@@ -19,7 +19,7 @@ Typically, by default, the term _Repository_ is interpreted to mean a DAO with _
 
 ## Example
 
-Image you are tasked with developing a data-centric application.  The application has to deal with data sources from relational database management systems (RDBMS), but the new CIO is mulling over migrating to a document-based management system (NoSQL).  The CIO won't make this discussion until 6-months from now.  Consequently, you may have to switch technology for your new task down the road.
+Imagine you are tasked with developing a data-centric application.  The application has to deal with data sources from relational database management systems (RDBMS), but the new CIO is mulling over migrating to a document-based management system (NoSQL).  The CIO won't make this discussion until 6-months from now.  Consequently, you may have to switch technology for your new task down the road.
 
 Since you are a lazy developer and you detest the idea of having to rework your entire application to accomodate an arbitrary decision, you decide to base your application's data access needs off of the (CRUD) Repository pattern.  If the NoSQL decision does go through, your application would be mostly insulated against it.  The only portion of your application that would be affect would be the implementation portion of your repository.  As such, you can simply create a new NoSQL repository object and replace any SQL-based repository instances with the new NoSQL repository instances.
 
@@ -65,6 +65,7 @@ var deleteResult = userRepo.Delete(456); // If deleteResult is true, the operati
 
 ## Disadvantages
 
+* For every domain model needing a repository, there will be an additional object to maintain
 * Unable to facilitate complex (analysis) queries involving other domain models
-* Depending on implementation & technology limitations, Read queries may need to be loaded into memory first before additional filtering can take place
-* Not all domain models need the entire CRUD functionality set (i.e. Audit logs will rarely ever need Update or Delete).  These scenarios means there will be many domain models that will either have unimplemented functionalities or implemented functionalities that are never used
+* Depending on implementation & technology limitations, _Read_ queries may need to be loaded into memory first before additional filtering can take place
+* Not all domain models need the entire CRUD functionality set (i.e. Audit logs will rarely ever need Update or Delete).  These scenarios will result in many domain models either have unimplemented functionalities or implemented functionalities that are never used

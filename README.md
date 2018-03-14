@@ -24,7 +24,7 @@ It is recommended that you utilize GitHub's repo notification features if you wi
 
 All views, thoughts and opinions expressed in this GitHub repository (also known as "the repo") are solely the author's own and does not necessarily reflect the stance of the author's employer(s), any associated organization(s) or other groups or individuals.
 
-Explicitly, the repo is **NOT** affiliated with California State University Long Beach (also known as "CSULB") nor does the repo represent CSULB in any capcity or in any manner other than the fact that the intended target audience are CSULB computer science students.  Therefore, all statements found within the repo should not be misconstrued as views, thoughts and opinions that are expressed by CSULB, CSULB's College of Engineering, nor by any and all individuals or agents representing CSULB.
+Explicitly, the repo is **NOT** recognized by, represents, nor is it affiliated with California State University Long Beach (also known as "CSULB") in any official capcity or in any manner other than the fact that the intended target audience are CSULB computer science students.  Therefore, all statements found within the repo should **NOT** be misconstrued as views, thoughts and opinions that are expressed by CSULB, CSULB's College of Engineering, nor by any and all individuals or agents representing CSULB.
 
 ## License
 

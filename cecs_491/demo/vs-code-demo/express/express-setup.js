@@ -52,6 +52,25 @@ app.get('/secure', (req, res) => {
         res.redirect('/login');
     }
 });
+
+
+
+app.get('/api/unsecure/json', (req, res) => {
+    res.json([1,2,3]);
+});
+
+app.get('/api/secure/json', (req, res) => {
+    res.json({
+        data: [1,2,3]
+    });
+});
+
+// curl -X POST http://localhost:8000/api/unsecure/json
+app.post('/api/unsecure/json', (req, res) => {
+    res.json([1,2,3]);
+});
+
+
     
 // Simple error page handling; must be last route defined
 app.get('*', (req, res) => {
@@ -61,4 +80,4 @@ app.get('*', (req, res) => {
 /**********************************************\ 
     Starting up Express 
 \**********************************************/
-app.listen(8000, () => console.log('Server started')); // Express defaults to port 3000
+app.listen(8000, () => console.log('Server started at http://localhost:8000')); // Express defaults to port 3000

@@ -1,5 +1,7 @@
+// Importing Puppeteer package
 const puppeteer = require('puppeteer')
 
+// Sites to traverse
 const sites = [
     { name: 'fakeSite', url: 'http://www.fake-example.org' },
     { name: 'google', url: 'https://www.google.com' },
@@ -23,13 +25,13 @@ const navigate = async (page, url, navOptions) => {
             .then((response) => {
                 // Making sure the navigation was successful
                 if(response.status() !== 200) {
-                    reject(`Unsuccessful navigation to ${response.url()}`);
+                    return reject(`Unsuccessful navigation to ${response.url()}`);
                 }
 
                 resolve(url);
             })
-            .catch((err)=> {
-                reject(err);
+            .catch((err) => {
+                return reject(err);
             });
     });
 };
@@ -49,7 +51,7 @@ const createPdf = async (page, name) => {
 
             resolve(true);
         } catch (err) {
-            reject(err);
+            return reject(err);
         }
     })
     
@@ -70,7 +72,11 @@ const googleSearch = async (page) => {
 
         await page.type("input[name='q']", "plants");
         await page.keyboard.press( 'Enter' );
-        await timeout(5000); // Wait for the search results to finish loading
+
+        // Wait 10 seconds so the search results will finish loading
+        // Without waiting, the DOM may not be ready yet.
+        // Not ideal to have a static wait, but used here to show timing is crucial when crawling
+        await timeout(10000); 
 
         await page.evaluate(() => {
             // You have access to the DOM directly here just like in the JavaScript Console
@@ -97,6 +103,8 @@ const googleSearch = async (page) => {
     };
 
     const page = await browser.newPage();
+
+    // Add a custom page load event
     page.on('load', () => {
         console.log(`Loading ${page.url()}`)
     })

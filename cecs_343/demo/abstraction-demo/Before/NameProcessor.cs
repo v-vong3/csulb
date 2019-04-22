@@ -11,7 +11,8 @@ namespace abstraction_demo.Before
         private List<string> _namesForDatabase;
         private List<string> _namesForTextFile;
 
-        public NameFormatter()
+        // Constructor for class
+        public NameProcessor()
         {
             // Initializing data containers
             _namesFromCSV = new List<string>();

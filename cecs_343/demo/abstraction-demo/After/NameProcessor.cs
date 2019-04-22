@@ -4,11 +4,12 @@ namespace abstraction_demo.After
     
     public class NameProcessor
     {
-
+        // Private fields
         private List<IDataSource> _dataSources;
         private List<IFormat> _formats;
         private List<IDestination> _destinations;
 
+        // Constructor for object
         public NameProcessor(List<IDataSrouce> dataSources, List<IFormat> formats, List<IDestination> destinations)
         {
             _dataSources = dataSources;

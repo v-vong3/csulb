@@ -1,0 +1,19 @@
+/* NOTE: Contains styles just for the demo to work */
+
+html, body, input, button, textarea {
+    font-size: 16pt;
+}
+
+input {
+    padding: 15px 5px 15px 5px;
+}
+
+textarea {
+    width: 50%;
+    color: red;
+    background-color: white;
+}
+
+.secure {
+    background-color: mediumseagreen;
+}

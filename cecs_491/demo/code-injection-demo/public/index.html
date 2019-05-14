@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"  href="index.css" />
+        <script src="site.js"></script>
+        <script src="calculator.js"></script>
+        <script src="calculator.secure.js"></script>
+    </head>
+    <body>
+        
+        <section>
+            <label for="left"></label> <input id="left" type="number" value="1" />
+            +
+            <label for="right"></label> <input id="right" type="number" value="1" />
+    
+            <button onclick="addHandler()">=</button>
+    
+            <span> </span> <span id="display"></span> 
+
+            <p>
+                <button onclick="reset()">Reset</button>
+                <button onclick="toggleSecure()">Toggle Secure</button>
+            </p>
+        </section>
+
+        <br />
+        <section>
+            <p>Injection through transparent modification</p>
+            <textarea rows="10" readonly>
+                function myNewAdd() {
+                    alert('Malicious Code')
+                }
+
+                add.myNewAdd = myNewAdd;
+            </textarea>
+        </section>
+
+        <section>
+            <p>Injection through opaque modification</p>
+            <textarea rows="10" readonly>
+                var addCopy = new add();
+
+                var newAdd = (a, b) => {
+                    alert('Malicious action executed!');
+
+                    return addCopy.constructor(a, b);
+                }
+                
+                add = newAdd;
+            </textarea>
+                
+        </section>
+    </body>
+</html>

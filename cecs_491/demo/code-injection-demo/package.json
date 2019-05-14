@@ -1,0 +1,14 @@
+{
+  "name": "code-injection-demo",
+  "version": "1.0.0",
+  "description": "Demo of code injection using JavaScript",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

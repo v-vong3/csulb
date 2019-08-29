@@ -6,7 +6,7 @@ This project provides a few guidelines for designing abstractions.  The focus wi
 
 ## Requirements
 
-* Design a system that formats names as [FirstName, LastName] (e.g. [Jobs, Steve], [Gates, Bill], etc.) instead of [FirstName LastName] (e.g. Steve Jobs, Bill Gates, etc.).
+* Design a system that formats names as [LastName, FirstName] (e.g. [Jobs, Steve], [Gates, Bill], etc.) instead of [FirstName LastName] (e.g. Steve Jobs, Bill Gates, etc.).
 
 * All names comes from either a Comma-Separated Value (CSV) file or RESTful JSON web service. Assume that the data will only consist of incorrectly formatted names with the first and last name separated by a space.  For the CSV file, all records will be separated by a new line.  For the web service, all records will be separated as a record in an array.
 

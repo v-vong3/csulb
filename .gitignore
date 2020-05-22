@@ -57,6 +57,7 @@ obj
 bower_modules
 packages
 .vs
+.vscode
 *.csproj.user
 *.pubxml
 

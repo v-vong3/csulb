@@ -12,9 +12,9 @@ It is worth noting that there is a sort of antithesis to design patterns called 
 
 ## Convention
 
-* Bolded patterns are patterns that are addressed
-* Italic patterns are patterns that were not described by the GoF
-* Bolded and italic patterns are addressed in the project and were not described by the GoF
+* **Bolded** patterns are patterns that are addressed
+* _Italic_ patterns are patterns that were not described by the GoF
+* **_Bolded and italic_** patterns are addressed in the project and were not described by the GoF
 
 ## Pattern Categories
 

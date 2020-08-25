@@ -16,7 +16,7 @@ High level objects should not need to know the specifics of the low level object
 
 _Graduate_ was modified to require an email argument for the constructor.  In addition, _UpdateThesisFilePath()_ method was added and corresponding _thesisFilePath_ in order to store/update the thesis' file location.  Finally, the _SubmitThesis()_ was updated to explicitly contain .NET code to send an email according to the requirements.
 
-THis breaks the Dependency Inversion Principle because now the code is dependent on the thesis submission to be an email.  This is compounded by the fact that both _email_ and _thesisFilePath_ are added as members to _Graduate_.  By doing so, email submission becomes more coupled to the object.  Also, the thesis submission is reliant on specifically .NET's implementaiton of sending an email instead of an abstraction.  Therefore, the high level module (_Graduate) is too aware of the implementation details of the thesis submission (.NET's _SmtpClient_)
+This breaks the Dependency Inversion Principle because now the code is dependent on the thesis submission to be an email.  This is compounded by the fact that both _email_ and _thesisFilePath_ are added as members to _Graduate_.  By doing so, email submission becomes more coupled to the object.  Also, the thesis submission is reliant on specifically .NET's implementaiton of sending an email instead of an abstraction.  Therefore, the high level module (_Graduate) is too aware of the implementation details of the thesis submission (.NET's _SmtpClient_)
 
 ## After
 

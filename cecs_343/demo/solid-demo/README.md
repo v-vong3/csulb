@@ -18,7 +18,7 @@ The examples are College-themed to be more relatable to the main audience and as
 
 ## README Conventions
 
-* Italic text is used when referring to a specific object, method, etc.
+* _Italic_ text is used when referring to a specific object, method, etc.
 
 * The entire filename with extension is used when referring to a specific file
 

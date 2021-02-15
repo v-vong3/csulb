@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+
+    <button class="btn btn-secondary" id="dataBtn" onclick="getData()">Get Data</button>
+
+    <button class="btn btn-primary" id="usersBtn" onclick="getUsers()">Get Bank Users</button>
+
+    <p>
+        <ol id="userList">
+        </ol>
+    </p>
+
+</div>
+
+
+<script>
+
+    function getData() {
+        console.log("Get Data");
+
+        var btn = document.getElementById("dataBtn");
+
+        btn.disabled = true;
+
+        fetch("http://localhost:5000/home/data2")
+            .then((res) => { return res.text(); })
+            .then((data) => render(data))
+            .catch((err) => {
+                renderError(err);
+            })
+            .finally(() => {
+                btn.disabled = false;
+            });
+
+    }
+
+
+    function getUsers() {
+
+        console.log("Get Users");
+
+        var btn = document.getElementById("usersBtn");
+
+        btn.disabled = true;
+
+        fetch("http://localhost:8181/api/bankusers")
+            .then((res) => { return res.json(); })
+            .then((data) => render(data))
+            .catch((err) => {
+                renderError(err);
+            })
+            .finally(() => {
+
+                btn.disabled = false;
+            });
+    }
+
+    function render(data) {
+
+        console.log("Render", data);
+
+        var list = document.querySelector("#userList");
+
+        if (data.charAt) {
+            list.innerHTML = "<span class='text-primary'>" + data + "</span>";
+        }
+        else if (data.push && data.length === 0) {
+            list.innerHTML = "<span class='text-primary'>No users</span>"
+        } else {
+            list.innerHTML = "";
+
+            data.forEach((v, i) => {
+                var li = document.createElement("li");
+
+                li.textContent = v.firstname + "----->" + v.entityId;
+                list.appendChild(li);
+            })
+        }
+    }
+
+    function renderError(error) {
+
+        console.error("RenderError", error);
+
+        var list = document.querySelector("#userList");
+
+        list.innerHTML = "<span class='text-danger'>" + error + "</span>";
+    }
+
+
+</script>
+

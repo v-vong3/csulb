@@ -20,6 +20,7 @@ namespace Company.BankApp.Managers
 
 
 
+
         // Feature: Create new user
         // Requirements: 
         //      User does not already exist

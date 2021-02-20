@@ -1,5 +1,6 @@
 ﻿using Company.BankApp.DomainModels;
 using Company.BankApp.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Company.BankApp.Managers
@@ -17,18 +18,35 @@ namespace Company.BankApp.Managers
 
         // Feature: Create new accounts
         // Requirements:
-        //      Savings must have a minimum of 500
+        //      Savings must have a minimum of 700
+        //      Can't have more than 1 account of the same type
         public bool CreateAccount(BankAccount newBankAccount)
         {
 
             if (newBankAccount.AccountType == BankAccountType.Savings)
             {
-                if (newBankAccount.Balance < 500)
+                if (newBankAccount.Balance < 700)
                 {
                     return false;
                 }
             }
 
+            // Lecture:
+            // Incur two round trips for consolidate business rules
+            if (String.IsNullOrWhiteSpace(newBankAccount.Owner?.EntityId))
+            {
+                throw new Exception($"Invalid {nameof(BankAppUser.EntityId)}");
+            }
+
+            var userAccounts = _bankAccountService.GetBankAccounts(newBankAccount.Owner);
+
+            foreach (var account in userAccounts)
+            {
+                if (account.AccountType == newBankAccount.AccountType)
+                {
+                    return false;
+                }
+            }
 
 
             return _bankAccountService.CreateAccount(newBankAccount);

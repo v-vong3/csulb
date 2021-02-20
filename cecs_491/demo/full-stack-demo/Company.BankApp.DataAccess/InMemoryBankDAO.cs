@@ -80,17 +80,7 @@ namespace Company.BankApp.DataAccess
             #endregion
 
 
-            #region Business Rules
-            if (String.IsNullOrWhiteSpace(bankAccount.OwnerId))
-            {
-                throw new ArgumentException($"Invalid {nameof(bankAccount.OwnerId)}");
-            }
-
-            if (!GetBankUsers().Select(x => x.EntityId).Contains(bankAccount.OwnerId))
-            {
-                throw new Exception($"Only existing users can have bank accounts");
-            }
-            #endregion
+           
 
             // Assign key
             bankAccount.EntityId = $"{AccountTable}_{DateTime.UtcNow.ToString(FormatDefaults.BankAccountFormat)}";

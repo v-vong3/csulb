@@ -15,5 +15,7 @@ namespace Company.DataStoreEntities
         public string Salt { get; set; }
 
         public DateTimeOffset DOB { get; set; }
+
+        public string Role { get; set; }
     }
 }

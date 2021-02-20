@@ -1,5 +1,4 @@
-﻿using Company.BankApp.DataAccess;
-using Company.BankApp.DataAccess.Abstractions;
+﻿using Company.BankApp.DataAccess.Abstractions;
 using Company.BankApp.DomainModels;
 using Company.BankApp.Entities;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace Company.BankApp.Services
 {
     public class BankAccountService
     {
-        private readonly IBankDAO _bankDAO = new InMemoryBankDAO();
+        private readonly IBankDAO _bankDAO;
 
 
         public BankAccountService(IBankDAO bankDAO)
@@ -51,10 +50,7 @@ namespace Company.BankApp.Services
             };
 
 
-            _bankDAO.AddBankAccount(bankAccountEntity);
-
-
-            return true;
+            return _bankDAO.AddBankAccount(bankAccountEntity);
         }
 
 

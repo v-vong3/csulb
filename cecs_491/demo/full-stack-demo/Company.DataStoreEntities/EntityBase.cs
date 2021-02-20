@@ -1,14 +1,17 @@
 ﻿using System;
 
-namespace Company.BankApp.DomainModels
+namespace Company.DataStoreEntities
 {
     // Lecture: It is best practice to consolidate
-    // attributes into a common base class.
+    // common attributes into a single base class to
+    // avoid redundant code.
+    // All properties here are common meta-data that
+    // you would want each record to have.
     // Also, C# properties are preferred versus fields 
     // as it makes Code Reflection easier.
     public abstract class EntityBase
     {
-        public string EntityId { get; set; }
+        public virtual string EntityId { get; set; }
 
         public DateTimeOffset CreateDate { get; set; }
 

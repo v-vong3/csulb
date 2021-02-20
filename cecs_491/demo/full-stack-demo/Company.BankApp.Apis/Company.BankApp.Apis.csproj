@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -17,6 +27,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Company.BankApp.DataAccess\Company.BankApp.DataAccess.csproj" />
     <ProjectReference Include="..\Company.BankApp.DomainModels\Company.BankApp.DomainModels.csproj" />
+    <ProjectReference Include="..\Company.BankApp.Managers\Company.BankApp.Managers.csproj" />
+    <ProjectReference Include="..\Company.BankApp.Security\Company.BankApp.Security.csproj" />
+    <ProjectReference Include="..\Company.BankApp.Services\Company.BankApp.Services.csproj" />
   </ItemGroup>
 
 </Project>

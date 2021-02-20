@@ -4,9 +4,9 @@
 
 <div>
 
-    <button class="btn btn-secondary" id="dataBtn" onclick="getData()">Get Data</button>
+    <button class="btn btn-secondary" id="dataBtn">Get Data</button>
 
-    <button class="btn btn-primary" id="usersBtn" onclick="getUsers()">Get Bank Users</button>
+    <button class="btn btn-primary" id="usersBtn">Get Bank Users</button>
 
     <p>
         <ol id="userList">
@@ -16,7 +16,11 @@
 </div>
 
 
-<script>
+<script nonce="5000">
+
+    document.getElementById("dataBtn").addEventListener("click", getData);
+
+    document.getElementById("usersBtn").addEventListener("click", getUsers);
 
     function getData() {
         console.log("Get Data");
@@ -46,7 +50,7 @@
 
         btn.disabled = true;
 
-        fetch("http://localhost:8181/api/bankusers")
+        fetch("http://localhost:8181/api/bankappuser")
             .then((res) => { return res.json(); })
             .then((data) => render(data))
             .catch((err) => {

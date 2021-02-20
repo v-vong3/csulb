@@ -1,5 +1,5 @@
 ﻿using Company.BankApp.DataAccess.Abstractions;
-using Company.BankApp.DomainModels;
+using Company.BankApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,8 +15,8 @@ namespace Company.BankApp.DataAccess
     {
         private readonly string _connectionString;
 
-        private static string UserTable => nameof(BankUser);
-        private static string AccountTable => nameof(BankAccount);
+        private static string UserTable => nameof(BankAppUserEntity);
+        private static string AccountTable => nameof(BankAccountEntity);
 
         public SqlBankDAO(string connectionString)
         {
@@ -24,13 +24,17 @@ namespace Company.BankApp.DataAccess
         }
 
 
-        public bool AddBankUser(BankUser bankUser)
+        public bool AddBankUser(BankAppUserEntity bankUser)
         {
             // Assign key
             bankUser.EntityId = $"{UserTable}_{DateTime.UtcNow.ToString(FormatDefaults.UserFormat)}";
 
             using (var conn = new SqlConnection(_connectionString))
             {
+                // Lecture: 
+                // For simplicity the asynchronous methods are not being used, but since this
+                // operation is IO bound, it is best practice to leverage the respective asynchronous 
+                // methods instead
                 conn.Open();
 
                 using (var command = new SqlCommand())
@@ -41,26 +45,31 @@ namespace Company.BankApp.DataAccess
                     command.CommandType = CommandType.Text;
 
 
-                    // Lecture: Avoid building dynamic SQL string statements as it can lead to 
-                    // SQL injection vulnerabilities. Use parameterized SQL commands to limit this
-                    // attack vector. 
+                    // Lecture: 
+                    // Avoid building dynamic SQL string statements as it can lead to 
+                    // SQL injection vulnerabilities. 
                     command.CommandText =
-                        $"INSERT INTO BankUser(EntityId,CreateDate,FirstName,Surname,City,StateCode)" +
+                        $"INSERT INTO BankUser(EntityId,CreateDate,Username,PasswordHash,Salt,DOB)" +
                         $"SELECT {bankUser.EntityId},{DateTime.UtcNow}," +
-                        $"{bankUser.Firstname},{bankUser.Surname},{bankUser.City},{bankUser.StateCode}";
+                        $"{bankUser.Username},{bankUser.PasswordHash},{bankUser.Salt},{bankUser.DOB}";
 
                     #region SQL Injection Protection Example
+                    // Lecture:
+                    // Use parameterized SQL commands to limit SQL injection attack vector by  
+                    // leveraging ADO.NET security checks by using SqlParameter.
+                    // The better alternative is to call a SQL Stored Procedure
+                    // and pass values through SqlParameters. 
                     command.CommandText =
-                        "INSERT INTO BankUser(EntityId,CreateDate,FirstName,Surname,City,StateCode)" +
+                        "INSERT INTO BankUser(EntityId,CreateDate,Username,PasswordHash,Salt,DOB)" +
                         "SELECT @v0,@v1,@v2,@v3,@v4,@v5";
 
                     var parameters = new SqlParameter[6];
                     parameters[0] = new SqlParameter("@v0", bankUser.EntityId);
                     parameters[1] = new SqlParameter("@v1", DateTime.UtcNow);
-                    parameters[2] = new SqlParameter("@v2", bankUser.Firstname);
-                    parameters[3] = new SqlParameter("@v3", bankUser.Surname);
-                    parameters[4] = new SqlParameter("@v4", bankUser.City);
-                    parameters[5] = new SqlParameter("@v5", bankUser.StateCode);
+                    parameters[2] = new SqlParameter("@v2", bankUser.Username);
+                    parameters[3] = new SqlParameter("@v3", bankUser.PasswordHash);
+                    parameters[4] = new SqlParameter("@v4", bankUser.Salt);
+                    parameters[5] = new SqlParameter("@v5", bankUser.DOB);
 
 
                     command.Parameters.AddRange(parameters);
@@ -69,7 +78,7 @@ namespace Company.BankApp.DataAccess
 
                     #region Reflection Example (Code Introspection)
                     command.CommandText =
-                        "INSERT INTO BankUser(EntityId,CreateDate,FirstName,Surname,City,StateCode)" +
+                        "INSERT INTO BankUser(EntityId,CreateDate,Username,PasswordHash,Salt,DOB)" +
                         "SELECT ";
 
                     // Lecture: When using Reflection, always make sure to target the class members
@@ -77,7 +86,7 @@ namespace Company.BankApp.DataAccess
                     // all objects in C# are derived from System.Object, thus they will contain
                     // common methods which is often overlooked and can impact Reflection code.
                     var flags = BindingFlags.Public | BindingFlags.Instance;
-                    var properties = typeof(BankUser).GetProperties(flags)
+                    var properties = typeof(BankAppUserEntity).GetProperties(flags)
                                                      .Where(p => p.CanRead)
                                                      .Where(p => p.CanWrite)
                                                      .Where(p => p.PropertyType.IsPrimitive);
@@ -87,7 +96,7 @@ namespace Company.BankApp.DataAccess
                         command.CommandText += $"@{p.Name},";
                         command.Parameters.AddWithValue(p.Name, p.GetValue(bankUser));
                     }
-
+                    // Remove last comma
                     command.CommandText = command.CommandText.Remove(command.CommandText.Length - 1);
 
                     #endregion
@@ -105,17 +114,27 @@ namespace Company.BankApp.DataAccess
             return false;
         }
 
-        public ISet<BankUser> GetBankUsers()
+        public ISet<BankAppUserEntity> GetBankUsers()
         {
             throw new NotImplementedException();
         }
 
-        public bool AddBankAccount(BankAccount bankAccount)
+        public bool AddBankAccount(BankAccountEntity bankAccount)
         {
             throw new NotImplementedException();
         }
 
-        public ISet<BankAccount> GetBankAccountsBy(string bankUserId)
+        public ISet<BankAccountEntity> GetBankAccountsBy(string bankUserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreditAccount(string bankAccountId, decimal amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DebitAccount(string bankAccountId, decimal amount)
         {
             throw new NotImplementedException();
         }

@@ -2,18 +2,22 @@
 
 namespace Company.BankApp.DomainModels
 {
-    public class BankUser : EntityBase, IEquatable<BankUser>
+    public class BankAppUser : IEquatable<BankAppUser>
     {
-        public string Firstname { get; set; }
+        public string EntityId { get; set; }
+
+        public string FirstName { get; set; }
 
         public string Surname { get; set; }
 
+        public string Username { get; set; }
 
-        public string City { get; set; }
+        public string PasswordHash { get; set; }
 
-        public string StateCode { get; set; }
+        public string Salt { get; set; }
 
 
+        public string DOB { get; set; }
 
 
 
@@ -24,7 +28,7 @@ namespace Company.BankApp.DomainModels
         // interpretation of Equals()
         public override bool Equals(object obj)
         {
-            return Equals(obj as BankUser);
+            return Equals(obj as BankAppUser);
         }
 
         public override int GetHashCode()
@@ -33,7 +37,7 @@ namespace Company.BankApp.DomainModels
         }
 
 
-        public bool Equals(BankUser other)
+        public bool Equals(BankAppUser other)
         {
             if (other is null)
             {
@@ -45,7 +49,7 @@ namespace Company.BankApp.DomainModels
 
         public override string ToString()
         {
-            return $"{nameof(BankUser)}_{this.EntityId}";
+            return $"{nameof(BankAppUser)}_{this.EntityId}";
         }
 
 

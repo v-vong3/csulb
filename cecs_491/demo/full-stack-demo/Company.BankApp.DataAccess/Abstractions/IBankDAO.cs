@@ -1,4 +1,5 @@
-﻿using Company.BankApp.DomainModels;
+﻿
+using Company.BankApp.Entities;
 using System.Collections.Generic;
 
 namespace Company.BankApp.DataAccess.Abstractions
@@ -9,12 +10,20 @@ namespace Company.BankApp.DataAccess.Abstractions
     // case, the use of ISet<T> is enforcing the business rule of no duplicates.
     public interface IBankDAO
     {
-        bool AddBankUser(BankUser bankUser);
-        ISet<BankUser> GetBankUsers();
+        bool AddBankUser(BankAppUserEntity bankUser);
+        ISet<BankAppUserEntity> GetBankUsers();
 
 
-        bool AddBankAccount(BankAccount bankAccount);
-        ISet<BankAccount> GetBankAccountsBy(string bankUserId);
+        bool AddBankAccount(BankAccountEntity bankAccount);
+        ISet<BankAccountEntity> GetBankAccountsBy(string bankUserId);
+
+
+        bool CreditAccount(string bankAccountId, decimal amount);
+
+        bool DebitAccount(string bankAccountId, decimal amount);
+
+
+        //bool TransferFunds(string sourceAccountId, string destinationAccountId, decimal amount);
 
     }
 }

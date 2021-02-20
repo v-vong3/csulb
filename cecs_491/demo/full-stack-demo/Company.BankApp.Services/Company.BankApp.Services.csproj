@@ -5,13 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Company.BankApp.DataAccess\Company.BankApp.DataAccess.csproj" />
+    <ProjectReference Include="..\Company.BankApp.DomainModels\Company.BankApp.DomainModels.csproj" />
     <ProjectReference Include="..\Company.BankApp.Entities\Company.BankApp.Entities.csproj" />
     <ProjectReference Include="..\Company.DataStoreEntities\Company.DataStoreEntities.csproj" />
-    <ProjectReference Include="..\Company.DataStore\Company.DataStore.csproj" />
   </ItemGroup>
 
 </Project>

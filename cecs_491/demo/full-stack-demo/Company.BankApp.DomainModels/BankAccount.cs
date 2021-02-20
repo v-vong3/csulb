@@ -2,11 +2,14 @@
 
 namespace Company.BankApp.DomainModels
 {
-    public class BankAccount : EntityBase, IEquatable<BankAccount>
+    public class BankAccount : IEquatable<BankAccount>
     {
+
+        public string EntityId { get; set; }
+
         public BankAccountType AccountType { get; set; }
 
-        public string UserId { get; set; }
+        public BankAppUser Owner { get; set; }
 
 
         public decimal Balance { get; set; }
@@ -39,7 +42,7 @@ namespace Company.BankApp.DomainModels
 
         public override string ToString()
         {
-            return $"{nameof(BankAccount)}_{this.EntityId}";
+            return $"{nameof(BankAccount)} {this.EntityId}";
         }
     }
 }

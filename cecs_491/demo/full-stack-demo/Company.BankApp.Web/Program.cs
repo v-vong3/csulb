@@ -14,11 +14,14 @@ namespace Company.BankApp.Web
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+
                     webBuilder.UseStartup<Startup>()
+
                               // Lecture: Same as the security note in Startup.cs
                               // We are limiting Kestral from advertising that the 
                               // web server is Kestral.
                               .UseKestrel(options => options.AddServerHeader = false);
+
                 });
     }
 }

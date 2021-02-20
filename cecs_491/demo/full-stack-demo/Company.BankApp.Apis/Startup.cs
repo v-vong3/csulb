@@ -1,3 +1,7 @@
+using Company.BankApp.DataAccess;
+using Company.BankApp.DataAccess.Abstractions;
+using Company.BankApp.Managers;
+using Company.BankApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +26,21 @@ namespace Company.APIs.Users
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddTransient(typeof(IBankDAO), typeof(InMemoryBankDAO));
+            services.AddTransient<BankAccountService>();
+            services.AddTransient<BankAccountManager>();
+            services.AddTransient<BankAppUserManager>();
+
+
+
+            //services.AddHsts(options =>
+            //{
+            //    options.IncludeSubDomains = true;
+            //    options.MaxAge = TimeSpan.FromDays(180);
+            //});
+
+
             services.AddCors(opts =>
             {
                 // Lecture: Get the configuration from an external source to make
@@ -68,12 +87,61 @@ namespace Company.APIs.Users
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Company.APIs.Users v1"));
             }
+            else
+            {
+                // Only in prod
+                //app.UseHsts();
+            }
+
+
 
             app.UseRouting();
+
+            //#region Security Headers
+            //// Adds security headers to all responses
+            //// Must be added before UseEndpoints and UseMvc
+            //app.Use(async (context, next) =>
+            //{
+            //    if (!context.Response.Headers.ContainsKey("Content-Security-Policy"))
+            //    {
+            //        context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'");
+            //    }
+
+            //    if (!context.Response.Headers.ContainsKey("X-Frame-Options"))
+            //    {
+            //        context.Response.Headers.Add("X-Frame-Options", "DENY");
+            //    }
+
+            //    if (!context.Response.Headers.ContainsKey("X-Xss-Protection"))
+            //    {
+            //        context.Response.Headers.Add("X-Xss-Protection", "1; mode=block");
+            //    }
+
+            //    if (!context.Response.Headers.ContainsKey("X-Content-Type-Options"))
+            //    {
+            //        context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+            //    }
+
+            //    if (!context.Response.Headers.ContainsKey("Referrer-Policy"))
+            //    {
+            //        context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+            //    }
+
+            //    if (!context.Response.Headers.ContainsKey("X-Permitted-Cross-Domain-Policies"))
+            //    {
+            //        context.Response.Headers.Add("X-Permitted-Cross-Domain-Policies", "none");
+            //    }
+
+
+            //    await next();
+            //});
+            //#endregion
 
             app.UseCors(policyName: "CorsPolicy");
 
             app.UseAuthorization();
+
+
 
             app.UseEndpoints(endpoints =>
             {

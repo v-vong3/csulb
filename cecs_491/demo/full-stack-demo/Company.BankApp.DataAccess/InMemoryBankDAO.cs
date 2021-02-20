@@ -1,18 +1,19 @@
-﻿using Company.BankApp.DataAccess.Abstractions;
-using Company.BankApp.DomainModels;
+﻿
+using Company.BankApp.DataAccess.Abstractions;
+using Company.BankApp.Entities;
 using Company.DataStore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Company.DataAccess
+namespace Company.BankApp.DataAccess
 {
     public class InMemoryBankDAO : IBankDAO
     {
 
         private readonly InMemoryDataStore _ds;
-        private static string UserTable => nameof(BankUser);
-        private static string AccountTable => nameof(BankAccount);
+        private static string UserTable => nameof(BankAppUserEntity);
+        private static string AccountTable => nameof(BankAccountEntity);
 
         public InMemoryBankDAO()
         {
@@ -21,19 +22,19 @@ namespace Company.DataAccess
             _ds.CreateTable(AccountTable);
         }
 
-        public ISet<BankUser> GetBankUsers()
+        public ISet<BankAppUserEntity> GetBankUsers()
         {
-            var allUsers = new HashSet<BankUser>();
+            var allUsers = new HashSet<BankAppUserEntity>();
 
             foreach (var user in _ds.GetRows(UserTable))
             {
-                allUsers.Add((BankUser)user);
+                allUsers.Add((BankAppUserEntity)user);
             }
 
             return allUsers;
         }
 
-        public bool AddBankUser(BankUser bankUser)
+        public bool AddBankUser(BankAppUserEntity bankUser)
         {
             // Lecture: Depending on the technology, the developer maybe responsible for assigning
             // the universally unique identifier (UUID) for each entity record.  The easier way to
@@ -59,17 +60,17 @@ namespace Company.DataAccess
 
 
 
-        public ISet<BankAccount> GetBankAccountsBy(string bankUserId)
+        public ISet<BankAccountEntity> GetBankAccountsBy(string bankUserId)
         {
-            var accounts = _ds.GetRows(AccountTable).Select(x => (BankAccount)x)
-                                                    .Where(x => x.UserId == bankUserId)
+            var accounts = _ds.GetRows(AccountTable).Select(x => (BankAccountEntity)x)
+                                                    .Where(x => x.OwnerId == bankUserId)
                                                     .ToHashSet();
 
             return accounts;
         }
 
 
-        public bool AddBankAccount(BankAccount bankAccount)
+        public bool AddBankAccount(BankAccountEntity bankAccount)
         {
             #region Argument Guards
             if (bankAccount is null)
@@ -80,12 +81,12 @@ namespace Company.DataAccess
 
 
             #region Business Rules
-            if (String.IsNullOrWhiteSpace(bankAccount.UserId))
+            if (String.IsNullOrWhiteSpace(bankAccount.OwnerId))
             {
-                throw new ArgumentException($"Invalid {nameof(bankAccount.UserId)}");
+                throw new ArgumentException($"Invalid {nameof(bankAccount.OwnerId)}");
             }
 
-            if (!GetBankUsers().Select(x => x.EntityId).Contains(bankAccount.UserId))
+            if (!GetBankUsers().Select(x => x.EntityId).Contains(bankAccount.OwnerId))
             {
                 throw new Exception($"Only existing users can have bank accounts");
             }
@@ -98,9 +99,30 @@ namespace Company.DataAccess
             return _ds.AddOrUpdate(AccountTable, bankAccount);
         }
 
+        public bool CreditAccount(string bankAccountId, decimal amount)
+        {
+            var account = _ds.GetRows(AccountTable).Select(x => (BankAccountEntity)x)
+                                                   .Where(x => x.EntityId == bankAccountId)
+                                                   .FirstOrDefault();
 
 
+            account.Balance += amount;
+
+            return _ds.AddOrUpdate(AccountTable, account);
+        }
+
+        public bool DebitAccount(string bankAccountId, decimal amount)
+        {
+            var account = _ds.GetRows(AccountTable).Select(x => (BankAccountEntity)x)
+                                                   .Where(x => x.EntityId == bankAccountId)
+                                                   .FirstOrDefault();
 
 
+            account.Balance -= amount;
+
+            // What if balance is < 0?
+
+            return _ds.AddOrUpdate(AccountTable, account);
+        }
     }
 }

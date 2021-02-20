@@ -1,4 +1,4 @@
-﻿namespace Company.BankApp.DomainModels
+﻿namespace Company.BankApp.DataAccess
 {
     // Lecture: Sometimes you want to group up configurations that are constants
     // or values that you repeatedly need. Consolidating them into a "Constants" object

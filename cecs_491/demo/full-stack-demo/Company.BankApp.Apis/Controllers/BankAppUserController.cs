@@ -1,6 +1,5 @@
-﻿using Company.BankApp.DataAccess.Abstractions;
-using Company.BankApp.DomainModels;
-using Company.DataAccess;
+﻿using Company.BankApp.DomainModels;
+using Company.BankApp.Managers;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,11 +9,17 @@ namespace Company.APIs.Users.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
-    public class BankUsersController : ControllerBase
+    public class BankAppUserController : ControllerBase
     {
-        // Lecture: Typically you either with to use the ASP.NET Core's DI container
-        // to inject this dependency or better yet move this to the business layer.
-        private readonly IBankDAO _bankDAO = new InMemoryBankDAO();
+        
+        private readonly BankAppUserManager _manager;
+
+
+        public BankAppUserController(BankAppUserManager manager)
+        {
+            _manager = manager;
+        }
+
 
 
         // Lecture: Not really needed if using the ASP.NET Core's CORS library
@@ -28,14 +33,28 @@ namespace Company.APIs.Users.Controllers
         [HttpGet]
         public IActionResult GetBankUsers()
         {
-            return Gatekeeper(() => { return Ok(_bankDAO.GetBankUsers()); });
+            return Gatekeeper(() =>
+            {
+                var allUsers = _manager.GetAllUsers();
+
+                return Ok(allUsers);
+            });
         }
 
 
         [HttpPost]
-        public IActionResult CreateBankUser(BankUser bankUser)
+        public IActionResult CreateBankUser(BankAppUser bankAppUser)
         {
-            return Gatekeeper(() => { return Ok(_bankDAO.AddBankUser(bankUser)); });
+            return Gatekeeper(() =>
+            {
+                if (_manager.CreateUser(bankAppUser))
+                {
+                    return Ok();
+                }
+
+                return BadRequest();
+
+            });
         }
 
         // Lecture: This is a easy way to avoid redundant code within each action method.

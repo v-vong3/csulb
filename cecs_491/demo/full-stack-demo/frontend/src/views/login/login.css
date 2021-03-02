@@ -1,0 +1,28 @@
+
+body, input, button {
+    font-size: 15pt;
+}
+
+input:focus {
+    background-color: deepskyblue;
+}
+
+p {
+    width: 300px;
+    margin-left: 15px;
+}
+
+    p > button {
+        float: right;
+        cursor: pointer;
+    }
+
+#error {
+    color: red;
+    visibility: hidden;
+}
+
+#success{
+    color: green;
+    visibility: hidden;
+}

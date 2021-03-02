@@ -1,0 +1,63 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+    font-size: 13pt;
+}
+
+@media screen and (max-height: 450px) {
+    html, body, p, nav, a, main, div { 
+        color: rgb(238, 47, 255) !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    html, body, p, nav, a, main, div { 
+        color: rgb(47, 255, 234) !important;
+    }
+}
+
+@media print and (max-width: 800px) {
+    html, body, p, nav, a, main, div { 
+        color: rgb(47, 255, 234) !important;
+    }
+}
+
+
+
+nav {
+    height: 20%;
+    min-height: 100px;
+    max-height: 100px;
+    background-color: crimson;
+    color: whitesmoke;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    /*padding: 5px 10px 5px 10px; */
+}
+    nav-bar > a, nav-bar > a:visited {
+        margin-left: 20px;
+        color: whitesmoke;
+    }
+
+    nav-bar > a:hover {
+        color: rgb(133, 176, 255);
+    }
+
+main {
+    height: 60%;
+    color: black;
+    background-color: rgb(223, 223, 223);
+    padding: 10px 10px;
+}
+
+footer {
+    height: 21%;
+    padding-top: 10px;
+    text-align: center;
+    background-color: darkgrey;
+}

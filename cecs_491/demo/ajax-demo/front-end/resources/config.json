@@ -1,0 +1,21 @@
+{
+    "authenticationService": {
+        "server_port": 100,
+        "hostname": "",
+        "schema": "",
+        "verbs": {
+            "get": "",
+            "post": "",
+            "put": "",
+            "options": "",
+            "delete": "",
+            "head": "",
+            "patch": "",
+            "connect": ""
+        }
+    },
+    "registrationService": {
+
+    }
+
+}

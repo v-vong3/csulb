@@ -1,0 +1,14 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "typescript": "^4.6.2"
+  }
+}

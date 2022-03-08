@@ -1,0 +1,28 @@
+.menu {
+    color: royalblue;
+    background-color: rgb(181, 176, 176);
+    top: -16px;
+    position: relative;
+    width: 100%;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: left;
+    height: 50px;
+}
+
+.menu ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;;
+}
+
+.menu ul li:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}

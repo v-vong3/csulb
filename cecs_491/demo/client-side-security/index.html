@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link type="text/css" rel="stylesheet" href="app.css" />
+    
+</head>
+<body>
+    <p>
+        <input id="username" type="email" placeholder="username" /> <br />
+        <input id="password" type="password" placeholder="password" /> <br />
+
+        <p>
+            <button id="loginBtn">Login</button>
+        </p>
+
+        <p>
+            <h4>
+                Navigation to another view
+            </h4>
+
+            <a href="account.html">Account Page</a>
+            
+            <br /> <br />
+            <a href="account.html" target="_blank">Account Page (new tab)</a>
+            
+            <br /> <br />
+            <span onclick="protectView()">Account Page</span>
+        </p>
+    </p>
+
+    <script>
+
+        function protectView() {
+            console.log("Protecting View")
+
+            const token = window.sessionStorage.getItem("token");
+
+            // Validate token using all the validation checks
+            if(token) {
+                window.location.href = "account.html";
+            }
+        }
+
+        function login(e) {
+            console.log("logging in", e.target);
+
+            let isFromValidUIEvent = false;
+
+            switch(e.target.id) {
+                case "password": 
+                    if(e.key === "Enter") {
+                        isFromValidUIEvent = true;
+                    }
+                case "loginBtn":
+                    isFromValidUIEvent = true;
+
+   
+            }
+
+           
+            // 1. AJAX call to server for token or cookie here 
+            
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFsaWNlQGV4YW1wbGUuY29tIiwiZmlyc3ROYW1lIjoiQWxpY2UiLCJsYXN0TmFtZSI6IiIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY0ODk2NjM5NX0.ZgkOUaWjD0zzqfYo2zbHEyXE2ekzp08Rx0bkR5QE0JM";
+            
+            // 2. Set token in client-side storage or into JavaScript memory
+            window.localStorage.setItem("token", token);
+            window.sessionStorage.setItem("token", token);
+            
+        }
+
+        function init() {
+            var usernameField = window.document.getElementById("username");
+            var passwordField = window.document.getElementById("password"); 
+            var loginButton = window.document.getElementById("loginBtn");
+
+            passwordField.addEventListener("keyup", login);
+            loginButton.addEventListener("click", login);
+
+            usernameField.focus();
+        }
+
+        init();
+    </script>
+</body>
+</html>

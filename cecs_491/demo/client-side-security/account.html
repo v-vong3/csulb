@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    
+    <script src="./node_modules/jwt-decode/build/jwt-decode.js"></script>
+    <script src="security.js"></script>
+</head>
+<body>
+    <h2>
+        Account Page
+    </h2>
+
+    <a href="/">Home</a>
+
+    <p>
+        <label>Session Storage</label>
+        <h5 id="session"></h5>
+    </p>
+    
+
+    <p>
+        <label>Local Storage</label>
+        <h5 id="local"></h5>
+    </p>
+
+    <p>
+        <button onclick="clearToken()">Clear Token</button>
+    </p>
+    
+
+    <script>
+        var session = window.document.getElementById("session");
+        var local = window.document.getElementById("local");
+
+        session.innerText = window.sessionStorage.getItem("token");
+        local.innerText = window.localStorage.getItem("token");
+
+        var jwt = window.jwt_decode(window.sessionStorage.getItem("token"));
+
+        console.log("jwt", jwt)
+
+    </script>
+</body>
+</html>

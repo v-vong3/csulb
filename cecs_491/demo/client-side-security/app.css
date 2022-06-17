@@ -1,0 +1,15 @@
+html {
+    font-size: 1.5em;
+}
+
+p {
+    margin-left: 20%;
+}
+
+input:focus {
+    border-color: red;
+}
+
+span {
+    cursor: pointer;
+}

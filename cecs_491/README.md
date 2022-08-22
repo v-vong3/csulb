@@ -11,3 +11,6 @@ This folder contains all learning materials for computer science students enroll
 
 * docs
   * Contains course materials such as the class syllabus, homework assignments, etc.
+
+* large-class
+  * Contains altered course materials for large capacity (50+ student) courses

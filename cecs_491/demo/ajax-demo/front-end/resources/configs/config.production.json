@@ -1,6 +1,6 @@
 {
     "authenticationService": {
-        "server_port": 100,
+        "server_port": 80,
         "hostname": "",
         "schema": "",
         "verbs": {

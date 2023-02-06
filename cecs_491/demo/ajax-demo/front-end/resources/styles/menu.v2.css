@@ -1,0 +1,37 @@
+.menu {
+    color: black;
+    background-color: rgb(113, 203, 226);
+    top: -20px;
+    left: -8px;
+    position: relative;
+    width: 15%;
+    height: 900px;
+    min-width: 115px;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: block;
+    font-size: larger;
+    padding-top: 20px;
+    margin-left: -20px;
+}
+
+.menu ul li {
+    
+    margin-bottom: 15px;
+}
+
+.menu ul li:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+
+.dynamic-content {
+    top: 10%;
+    border: solid red 2px;
+    position: absolute;
+    margin-left: 20%;
+}

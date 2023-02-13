@@ -1,14 +1,9 @@
-
-
 .menu {
     color: royalblue;
     background-color: rgb(181, 176, 176);
     top: -16px;
-    left: -8px;
     position: relative;
-    width: 104%;
-
-    overflow: hidden;
+    width: 100%;
 }
 
 .menu ul {
@@ -16,7 +11,6 @@
     display: flex;
     justify-content: left;
     height: 50px;
-    
 }
 
 .menu ul li {
@@ -24,17 +18,11 @@
     flex-direction: row;
     align-items: center;
     padding-left: 15px;
-    padding-right: 15px;
-    font-size: larger;
+    padding-right: 15px;;
 }
 
 .menu ul li:hover {
     cursor: pointer;
     background-color: black;
     color: white;
-}
-
-
-.dynamic-content {
-    border: solid red 2px;
 }

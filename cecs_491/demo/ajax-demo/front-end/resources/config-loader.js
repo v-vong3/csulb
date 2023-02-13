@@ -2,9 +2,7 @@
 (function(root) {
 
     // Specify global configruations 
-    const configs = {
-
-    }
+    const configs = {};
 
     root.configs = configs;
 })(window.myApp)

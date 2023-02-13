@@ -2,12 +2,13 @@
 
 // Immediately Invoke Function Execution (IIFE or IFE)
 // Protects functions from being exposed to the global object
-(function (root, ajaxClient, configs) {
+(function (root, ajaxClient) {
     // Dependency check
-    const isValid = root && ajaxClient && configs;
+    const isValid = root && ajaxClient;
 
     if(!isValid){
         // Handle missing dependencies
+        alert("Missing dependencies");
     }
 
     const webServiceUrl = 'http://localhost:8080';
@@ -32,7 +33,10 @@
 
             content += '</ul>'
 
-            // Note that this is not a production-ready way to dynamically build views
+            /* 
+                This was not a production-ready method to dynamically build views.
+                Instead, use either createDocumentFragmen, createElement/append or a JS frameworks.
+            */
             contentElement.innerHTML = content; 
         });
     }
@@ -43,9 +47,19 @@
                 data: ['Alice', 'Bob', 'John']
             });
 
-        console.log(request);
+        request
+            .then(function (response) {
+                return request;
+            })
+            .catch(function (error) {
+                console.log("Logging the SEND", request);
 
-        return request;
+                const contentElement = document.getElementsByClassName('dynamic-content')[0];
+
+                contentElement.innerHTML = error; 
+            });
+
+        
     }
 
     root.myApp = root.myApp || {};
@@ -68,5 +82,5 @@
 
     init();
 
-})(window, window.ajaxClient, configs);
+})(window, window.ajaxClient);
 

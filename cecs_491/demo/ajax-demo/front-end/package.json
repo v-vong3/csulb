@@ -1,5 +1,5 @@
 {
-  "name": "full-stack",
+  "name": "front-end",
   "version": "1.0.0",
   "scripts": {
     "start": "lite-server"

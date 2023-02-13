@@ -42,25 +42,27 @@
     }
 
     // NOT exposed to the global object ("Private" functions)
-    function sendDataHandler() {
-        var request = ajaxClient.send(webServiceUrl, {
-                data: ['Alice', 'Bob', 'John']
+    function sendDataHandler(url) {
+        var request = ajaxClient.send(url, {
+                data: ['Alice', 'Bob', 'John'] // Hard-coding data
             });
+
+        const contentElement = document.getElementsByClassName('dynamic-content')[0];
 
         request
             .then(function (response) {
-                return request;
+                
+                const timestamp = new Date();
+
+                contentElement.innerHTML = response.data + " " + timestamp.toString(); 
             })
             .catch(function (error) {
-                console.log("Logging the SEND", request);
+                console.log("Send", url, error.response.data); // Payload error message
 
-                const contentElement = document.getElementsByClassName('dynamic-content')[0];
-
-                contentElement.innerHTML = error; 
+                contentElement.innerHTML = error; // Only showing top level error message
             });
-
-        
     }
+
 
     root.myApp = root.myApp || {};
 
@@ -74,10 +76,12 @@
         // that could grow over time 
         var getDataElement = document.getElementById('get');
         var sendDataElement = document.getElementById('send');
+        var sendDataErrorElement = document.getElementById('sendError');
 
         // Dynamic event registration
         getDataElement.addEventListener('click', getDataHandler);
-        sendDataElement.addEventListener('click', sendDataHandler);
+        sendDataElement.addEventListener('click', () => sendDataHandler(webServiceUrl) );
+        sendDataErrorElement.addEventListener('click', () => sendDataHandler(webServiceUrl + "/error") );
     }
 
     init();

@@ -4,12 +4,15 @@
 
 An example of how to make Asynchronous JavaScript and XML (AJAX) calls from client-side code to server-side code. All traffic is done on the localhost.
 
-CORS is not needed since the traffic is not HTTPS.
+## CORS
+
+By default, some browsers are more strict than others when it comes to preflight CORS requests (i.e., Google Chrome and Microsoft Edge). To ensure that the demo works for stricter browsers, CORS was explicitly enabled between the front-end (localhost:3000) and the back-end (localhost:8080). 
+
 
 ## Directory
 
-* back-end: Contains all code for the Express.js web service
-* front-end: Contains all code for the web application
+* back-end: Contains all code for running Express.js, which acts as the host for the web service endpoints
+* front-end: Contains all code for the client-side web application including the AJAX code
 
 ## Back-End Directions
 1. ```sh 
@@ -25,7 +28,7 @@ CORS is not needed since the traffic is not HTTPS.
 
 ## Front-End Directions
 1. ```sh 
-   cd back-end
+   cd front-end
    ```
 2. ```js
    npm install
@@ -33,3 +36,5 @@ CORS is not needed since the traffic is not HTTPS.
 3. ```js 
    npm start
    ```
+
+  **Windows Users**: You may need to install lite-server as a global npm tool or use npx to execute it locally. 

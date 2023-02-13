@@ -1,15 +1,26 @@
 // Exposing get() to the global object ("Public" functions)
 function get(url) {
-    const getRequest = window.axios;
+    const ajax = window.axios;
 
-    return getRequest.get(url);
+    const configs = {
+        method: 'get',
+        headers: {
+
+        }
+    }; 
+
+    return ajax.get(url, configs);
 }
 
 // Exposing send() to the global object ("Public" functions)
 function send(url, data) {
-    const postRequest = window.axios;
+    const configs = {
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
 
-    return postRequest.post(url, data);
+    return window.axios.post(url, data, configs)
 }
 
 // Attaching ajaxClient to the global object

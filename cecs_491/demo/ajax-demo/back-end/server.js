@@ -5,7 +5,7 @@
 Request HTTP Headers:
 Origin
 Access-Control-Request-Method
-Access-Control-Reauest-Headers
+Access-Control-Request-Headers
 
 Response HTTP Headers:
 Access-Control-Allow-Origin
@@ -20,12 +20,13 @@ HTTP OPTIONS
 Host
 Origin
 Access-Control-Request-Method
+Access-Control-Request-Headers
 
-Preflight Response:
+Preflight (Server) Response:
 204/200
 Access-Control-Allow-Origin
 Access-Control-Allow-Methods
-
+Access-Control-Allow-Headers
 */
 
 
@@ -83,6 +84,8 @@ app.post('/error', (request, response) => {
     // Example of a server-side error with useful error message
     response.status(500).send('Database is full');
 })
+
+
 
 // For preflight CORS request
 app.options('/*', (request, response) => {

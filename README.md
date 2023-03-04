@@ -30,4 +30,4 @@ Explicitly, the repo is **NOT** recognized by, represents, nor is it affiliated 
 
 All of my demos are released under the [MIT](LICENSE) license, but **all** third-party components used within the demos belong to their respective owners, thus maintaining their respective licenses.
 
-All other original works by me are Copyright &copy; 2018 by Vatanak Vong
+All other original works by me are Copyright &copy; 2023

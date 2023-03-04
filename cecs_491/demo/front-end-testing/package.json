@@ -1,15 +1,23 @@
 {
   "name": "front-end-testing",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Demos for front-end test automation",
+  "scripts": {
+    "nw": "npx nightwatch --config ./nightwatch-demo/nightwatch.conf.js --headless",
+    "nw:front-end": "http-server ./nightwatch-demo/front-end -p 3000",
+
+    "test:nw": "npm run nw:front-end & npm run nw",
+    "test:cy": "npx cypress open",
+    "test:jest": "jest ./jest-demo",
+    "front-end": "http-server ./front-end -p 3000"
+  },
   "devDependencies": {
+    "cypress": "^12.7.0",
+    "chromedriver": "^110.0.0",
+    "geckodriver": "^3.2.0",
+    "nightwatch": "^2.6.15",
+    "http-server": "^14.1.1",
     "jest": "^27.4.7"
   },
-  "scripts": {
-    "test": "jest"
-  },
-  "keywords": [],
-  "author": "",
   "license": "ISC"
 }

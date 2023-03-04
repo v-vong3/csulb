@@ -1,6 +1,6 @@
 const RegService = require('./RegistrationService');
 
-test('create account with valid inputs', () => {
+test('Create account using valid inputs (Should PASS)', () => {
     // Arrange
     let username = 'alice@google.com'
     let password = 'password'
@@ -9,11 +9,11 @@ test('create account with valid inputs', () => {
     let actual = RegService.createUserAccount(username, password);
 
     // Assert
-    expect(actual).toBe(true); 
+    expect(actual).toBe(true); // assert.isTrue()
   });
 
 
-  test('create account with invalid password', () => {
+  test('Create account using invalid password (Should FAIL)', () => {
     // Arrange
     let username = 'alice@google.com'
     let password = 'pass'
@@ -25,7 +25,7 @@ test('create account with valid inputs', () => {
     expect(actual).toBe(false); 
   });
 
-  test('create account with invalid username', () => {
+  test('Create account using invalid username (Should FAIL)', () => {
     // Arrange
     let username = 'alice'
     let password = 'password'

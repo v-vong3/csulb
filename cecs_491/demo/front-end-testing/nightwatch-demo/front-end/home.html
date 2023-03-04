@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h2 id="banner">This is the home page</h2>
+
+    <button onclick="logout()">Log out</button>
+
+    <script>
+        const interval = setInterval(function () { 
+            const isAuth = window.sessionStorage.getItem('session-id');
+
+            if(!isAuth) {
+                logout();
+            }
+        }, 10);
+
+        function logout() {
+            clearInterval(interval);
+            window.sessionStorage.clear();
+            window.location.replace(window.location.origin);
+        }
+    </script>
+</body>
+</html>

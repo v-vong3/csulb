@@ -1,0 +1,49 @@
+
+main, p, ul {
+    text-align: center;
+    margin-top: 50px;    
+}
+
+
+ul li {
+    list-style: none;
+    margin: 15px 15px;
+    border: 1px solid red;
+}
+
+a {
+    margin-right: 15px;
+}
+
+button, a {
+    font: 14pt "Times New Roman";
+}
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+    }
+
+input {
+    font: 14pt "Times New Roman";
+    background-color: lightgrey;
+    margin-top: 10px;
+}
+
+input:focus {
+    background-color: cyan;
+    color: black;
+}
+
+.granted {
+    color: green;
+}
+
+.denied {
+    color: red;
+    font-weight: bold;
+}

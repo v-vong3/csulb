@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Token Handling</title>
+
+    <link rel="stylesheet" href="app.css" /> 
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script src="worker-init.js"></script>
+</head>
+<body>
+    <main>
+        <p>
+            <input id="username" type="text" placeholder="username" />
+            <br />
+            <input id="password" type="password" placeholder="password" />
+        </p>
+        <ul>
+            <li><button onclick="secureCookie()">Get Secure Content (Cookie)</button></li>
+            <li><button onclick="secureHeader()">Get Secure Content (Header)</button></li>
+            <li>
+                <a target="_blank" href="#">Open New Tab</a> 
+                <button onclick="showWebStorage()">Show Web Storage</button> 
+            </li>
+            <br />
+            <hr />
+            <br />
+            <li><button onclick="loginModel(this)">Login (Model)</button></li>
+            <li><button onclick="loginCookie()">Login (Cookie)</button></li>
+            <li><button onclick="loginWebStorage()">Login (Web Storage)</button></li>
+            <li><button onclick="loginWebWorker()">Login (Web Worker)</button></li>
+        </ul>
+
+        <p id="messageBox"></p>
+    </main>
+
+    <script>
+        const token = { value: "" };
+        const messageBox = document.getElementById('messageBox');
+
+        const ajax = axios.create({
+            baseURL: 'http://localhost:5000/secure',
+            withCredentials: true, // CORS request requirement for cookie & auth header
+            headers: {
+                'Origin': window.location.origin
+            }
+        });
+
+
+        function secureCookie() {
+            ajax.get('/cookie').then(function (response) {
+                messageBox.innerHTML = response.data;
+            })
+        }
+
+        function secureHeader() {
+            const authValue = 'bearer ' + token.value;
+
+            ajax.get('/header', { headers: {
+                'Authorization': authValue
+            }}).then(function (response) {
+                messageBox.innerHTML = response.data;
+            })
+        }
+
+        function showWebStorage() {
+            messageBox.innerHTML = Date.now() + '<br />' 
+                                    + "Session:" + JSON.stringify(sessionStorage) + '<br />' 
+                                    + "Local:" + JSON.stringify(localStorage);
+            
+            console.log("session", sessionStorage.getItem("token-session"));
+            console.log("local", localStorage.getItem("token-local"));
+
+        }
+        
+        
+
+        function loginModel(e) {
+            const username = document.getElementById('username').value;
+            const password = document.querySelector('#password').value;
+
+ 
+
+            const loginModel = {
+                username: username, 
+                password: password
+            }
+
+            const invalidModel = {
+                password: null
+            }
+
+            const invalidModel2 = {
+                username: null,
+                password: null
+            }
+
+            const invalidModel3 = {
+                username: 5,
+                password: null
+            }
+
+            const invalidModel4 = {
+                username: '',
+                password: null
+            }
+
+            ajax.post('/loginModel', loginModel)
+                .then(function (response) {
+                    token.value = response.data;
+
+                    messageBox.innerHTML = JSON.stringify(token);
+
+                }).catch(function (error) {
+                    console.log(error)
+                })
+
+            return false;
+        }
+
+        function loginCookie() {
+            const username = document.getElementById('username').value;
+            const password = document.querySelector('#password').value;
+
+            const data = {
+                username,
+                password
+            }
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            ajax.post('/loginCookie', data, config)
+                .then(function (response) {
+                    if(response.status != 200) {
+                        messageBox.innerHTML = "A bunch of malarky happened";
+
+                        return false;
+                    }
+                    messageBox.innerHTML = document.cookie;
+                })
+                .catch(function (error) {
+                    const err = error.response.data.errors; 
+                    for(var p in err ) {
+                        messageBox.innerHTML += err[p];
+                    }
+                })
+
+            return false;
+        }
+
+        function loginWebStorage() {
+            const data = {
+                username: 'test',
+                password: 'test'
+            }
+            ajax.post('/loginWebStorage', data)
+                .then(function (response) {
+                    
+                    sessionStorage.clear();
+                    localStorage.clear();
+
+                    sessionStorage.setItem("token-session", response.data + "-->session");
+                    localStorage.setItem("token-local", response.data + "-->local");
+
+                    showWebStorage();
+
+                })
+                .catch(function (error) {
+                    console.log("Storage error", error);
+                })
+        }
+
+        function loginWebWorker() {
+            const data = {
+                username: 'test',
+                password: 'test'
+            }
+            
+            ajax.post('/loginWebStorage', data)
+                .then(function (response) {
+                    myWorker.postMessage(response.data);
+
+                    myWorker.onmessage = (e) => {
+                        console.log('Reponse from worker', e.data)
+                    };
+                    
+                    console.log('post sent')
+                })
+                .catch(function (err) {
+                    console.log('axios error', err)
+                })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME page</title>
+
+    <script src="node_modules/htmx.org/dist/htmx.js"></script>
+</head>
+<body>
+    <main>
+        <h2>This is the HOME page</h2>
+
+        <!-- Get -->
+        <div  id="view-container"></div>
+
+        <!-- Uses htmx (framework) to inject HTML into current HTML page -->
+        <button hx-get="http://localhost:8080/signin/myGetEndpoint"  
+                hx-target="#view-container">
+                Content with GET
+        </button>
+        <br />
+        <button hx-post="http://localhost:8080/signin/myPostEndpoint"  
+                hx-target="#view-container">
+                Content with POST
+        </button>
+    </main>
+</body>
+</html>
